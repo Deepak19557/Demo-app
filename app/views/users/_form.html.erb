@@ -1,0 +1,40 @@
+<%= form_with(model: user) do |form| %>
+
+  <div>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %><br>
+    <%= form.text_area :last_name  %>
+  </div>
+
+
+  <div>
+    <%= form.label :number %><br>
+    <%= form.text_area :number %>
+  </div> 
+  
+  <div>
+    <%= form.label :gender %><br>
+    <%= form.radio_button :gender, 'male' %> MALE
+    <%= form.radio_button :gender, 'female' %> FEMALE
+  </div>
+
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
